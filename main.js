@@ -166,7 +166,7 @@ class circularList {
 
   findLast(value) {
     let currNode = this.head;
-    let indexToFind = 0;
+    let indexToFind = -1;
     for (let i = 0; i < this.size; i++) {
       if (currNode.value === value) {
         indexToFind = i;
