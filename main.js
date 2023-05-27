@@ -155,14 +155,38 @@ class circularList {
 
   findFirst(value) {
     let currNode = this.head;
+    for (let i = 0; i < this.size; i++) {
+      if (currNode.value === value) {
+        return i;
+      }
+      currNode = currNode.nextNode;
+    }
+    return -1;
+  }
+
+  findLast(value) {
+    let currNode = this.head;
     let indexToFind = -1;
     for (let i = 0; i < this.size; i++) {
       if (currNode.value === value) {
         indexToFind = i;
-        return indexToFind;
       }
       currNode = currNode.nextNode;
     }
     return indexToFind;
+  }
+
+  clear() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  extend(list) {
+    let currNode = list.head;
+    for (let i = 0; i < list.size; i++) {
+      this.append(currNode.value);
+      currNode = currNode.nextNode;
+    }
   }
 }
