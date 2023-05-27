@@ -60,4 +60,66 @@ class circularList {
     }
     this.size++;
   }
+  delete(index) {
+    if (index < 0 || index > this.size - 1) {
+      throw new Error("Error. Wrong index");
+    }
+    let deletedItem = null;
+    if (this.size === 1) {
+      deletedItem = this.head.value;
+      this.head = null;
+      this.tail = null;
+    } else if (index === 0) {
+      deletedItem = this.head.value;
+      this.head = this.head.nextNode;
+      this.tail.nextNode = this.head;
+    } else {
+      let currNode = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        currNode = currNode.nextNode;
+      }
+      deletedItem = currNode.nextNode.value;
+      currNode.nextNode = currNode.nextNode.nextNode;
+      if (index === this.size - 1) {
+        this.tail = currNode;
+      }
+    }
+    this.size--;
+    return deletedItem;
+  }
+
+  deleteAll(value) {
+    let currNode = this.head;
+    let prevNode = this.tail;
+    for (let i = 0; i < this.size; i++) {
+      if (currNode.value === value) {
+        if (i === 0) {
+          this.head = this.head.nextNode;
+          this.tail.nextNode = this.head;
+          prevNode = this.tail;
+        } else {
+          prevNode.nextNode = currNode.nextNode;
+          if (i === this.size - 1) {
+            this.tail = prevNode;
+          }
+        }
+        this.size--;
+        i--;
+      } else {
+        prevNode = currNode;
+      }
+      currNode = currNode.nextNode;
+    }
+  }
+
+  get(index) {
+    if (index < 0 || index > this.size - 1) {
+      throw new Error("Error. Wrong index");
+    }
+    let currNode = this.head;
+    for (let i = 0; i < index; i++) {
+      currNode = currNode.nextNode;
+    }
+    return currNode.value;
+  }
 }
