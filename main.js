@@ -190,3 +190,5 @@ class circularList {
     }
   }
 }
+
+module.exports = { circularList };
