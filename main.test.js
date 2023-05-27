@@ -1,15 +1,15 @@
 "use strict"
 
-const { circularList } = require("./main.js");
+const { arrayList } = require("./main.js");
 
 describe("length()", () => {
     test("When list is empty returns 0", () => {
-      const list = new circularList();
+      const list = new arrayList();
       expect(list.length()).toBe(0);
     });
 
     test("When list not empty return correct length", () => {
-        const list = new circularList();
+        const list = new arrayList();
         list.append("a");
         list.append("b");
         list.append("c");
@@ -21,14 +21,14 @@ describe("length()", () => {
 
 describe("append()", () => {
   test("When appending new node and list is empty ", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     expect(list.get(0)).toBe("a");
     expect(list.length()).toBe(1);
   });
 
   test("When appending new node and list is not empty", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     expect(list.get(0)).toBe("a");
@@ -37,7 +37,7 @@ describe("append()", () => {
   });
 
   test("When invalid input type, throw error", () => {
-    const list = new circularList();
+    const list = new arrayList();
     expect(() => {
       list.append(7);
     }).toThrow("Error. Wrong input type");
@@ -51,14 +51,14 @@ describe("append()", () => {
 
 describe("insert()", () => {
   test("When inserting new element and list is empty ", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.insert("a", 0);
     expect(list.get(0)).toBe("a");
     expect(list.length()).toBe(1);
   });
 
   test("When inserting new element at the begining of not empty list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.insert("b", 0);
     expect(list.get(0)).toBe("b");
@@ -67,7 +67,7 @@ describe("insert()", () => {
   });
 
   test("When inserting new element at the end of not empty list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.insert("b", 1);
     expect(list.get(0)).toBe("a");
@@ -76,7 +76,7 @@ describe("insert()", () => {
   });
 
   test("When inserting new element in the middle of not empty list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.insert("c", 1);
@@ -86,19 +86,19 @@ describe("insert()", () => {
     expect(list.length()).toBe(3);
   });
   test("When inserting new element on negative index", () => {
-    const list = new circularList();
+    const list = new arrayList();
     const checkNegIndex = () => list.insert("b", -1);
     expect(checkNegIndex).toThrow("Error. Wrong index");
   });
 
   test("When inserting new element on index that out of range", () => {
-    const list = new circularList();
+    const list = new arrayList();
     const checkBigIndex = () => list.insert("a", 10);
     expect(checkBigIndex).toThrow("Error. Wrong index");
   });
 
   test("When inserting new element with invalid data type", () => {
-    const list = new circularList();
+    const list = new arrayList();
     expect(() => {
       list.insert(7, 0);
     }).toThrow("Error. Wrong input type");
@@ -111,7 +111,7 @@ describe("insert()", () => {
 
 describe("delete()", () => {
   test("When deleting every node length must be 0", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.delete(0);
@@ -120,7 +120,7 @@ describe("delete()", () => {
   });
 
   test("When deleting the first node element", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const deleted = list.delete(0);
@@ -130,7 +130,7 @@ describe("delete()", () => {
   });
 
   test("When deleting the last node element", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const deleted = list.delete(1);
@@ -140,7 +140,7 @@ describe("delete()", () => {
   });
 
   test("When deleting node element in the middle", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("c");
@@ -152,7 +152,7 @@ describe("delete()", () => {
   });
 
   test("When deleting node if index is negative ", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const checkNegIndex = () => list.delete(-1);
@@ -162,7 +162,7 @@ describe("delete()", () => {
   });
 
   test("When deleting node if index is out of range", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const checkBigIndex = () => list.delete(3);
@@ -174,7 +174,7 @@ describe("delete()", () => {
 
 describe("deleteAll()", () => {
   test("When deleting all the nodes with matching element", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("c");
@@ -188,7 +188,7 @@ describe("deleteAll()", () => {
   });
 
   test("When deleting all the nodes with every element in list matching", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("a");
     list.append("a");
@@ -197,13 +197,13 @@ describe("deleteAll()", () => {
   });
 
   test("When the list is empty cause no effect", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.deleteAll("a");
     expect(list.length()).toBe(0);
   });
 
   test("When there is no matching elements in list cause no effect", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("c");
@@ -217,7 +217,7 @@ describe("deleteAll()", () => {
 
 describe("get()", () => {
   test("When returning the element by it's index", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("c");
@@ -227,7 +227,7 @@ describe("get()", () => {
   });
 
   test("When get on negative index", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     expect(() => {
       list.get(-1);
@@ -235,7 +235,7 @@ describe("get()", () => {
   });
 
   test("When get on index that is out of range", () => {
-      const list = new circularList();
+      const list = new arrayList();
       list.append("a");
       expect(() => {
           list.get(2);
@@ -245,7 +245,7 @@ describe("get()", () => {
 
 describe("clone()", () => {
   test("When returning a new list which has the same elements", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const clonedList = list.clone();
@@ -255,7 +255,7 @@ describe("clone()", () => {
   });
 
   test("When cloned list must not affect original one", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     const clonedList = list.clone();
@@ -265,7 +265,7 @@ describe("clone()", () => {
   });
 
   test("When returning an empty list if cloning from empty", () => {
-    const list = new circularList();
+    const list = new arrayList();
     const clonedList = list.clone();
     expect(clonedList.length()).toEqual(0);
   });
@@ -273,7 +273,7 @@ describe("clone()", () => {
 
 describe("reverse()", () => {
   test("When returning reversed list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("c");
@@ -284,14 +284,14 @@ describe("reverse()", () => {
   });
 
   test("When returning the same list if there is only 1 node", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.reverse();
     expect(list.get(0)).toEqual("a");
   });
 
   test("When reversing the empty list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     expect(() => {
       list.reverse();
     }).toThrow("Error. The list is empty");
@@ -300,7 +300,7 @@ describe("reverse()", () => {
 
 describe("findFirst()", () => {
   test("When returning index of the first occurrence of an element", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("a");
@@ -312,20 +312,20 @@ describe("findFirst()", () => {
   });
 
   test("When returning -1 if the element has been not found", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");  
     expect(list.findFirst("b")).toEqual(-1);
   });
 
   test("When returning -1 if the list is empty", () => {
-    const list = new circularList();
+    const list = new arrayList();
     expect(list.findFirst("a")).toBe(-1);
   });
 });
 
 describe("findLast()", () => {
   test("When must return the index of the last occurrence of the element", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.append("b");
     list.append("a");
@@ -337,27 +337,27 @@ describe("findLast()", () => {
   });
 
   test("When returning -1 if the element has been not found", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");  
     expect(list.findLast("x")).toEqual(-1);
   });
 
   test("When returning -1 if the list is empty", () => {
-    const list = new circularList();
+    const list = new arrayList();
     expect(list.findLast("a")).toBe(-1);
   });
 });
 
 describe("clear()", () => {
   test("When removing all elements from list", () => {
-    const list = new circularList();
+    const list = new arrayList();
     list.append("a");
     list.clear();
     expect(list.length()).toBe(0);
   });
 
   test("When removing all elements from an empty list", () => {
-    const list = new circularList();   
+    const list = new arrayList();   
     list.clear();
     expect(list.length()).toBe(0);
   });
@@ -365,9 +365,9 @@ describe("clear()", () => {
 
 describe("extend()", () => {
   test("When adding all elements of the given list to the end of first list", () => {
-    const list1 = new circularList();
+    const list1 = new arrayList();
     list1.append("a");
-    const list2 = new circularList();
+    const list2 = new arrayList();
     list2.append("b");
     list1.extend(list2);
 
@@ -377,9 +377,9 @@ describe("extend()", () => {
   });
 
   test("When given list is empty cause no effect", () => {
-    const list1 = new circularList();
+    const list1 = new arrayList();
     list1.append("a");
-    const list2 = new circularList();
+    const list2 = new arrayList();
     list1.extend(list2);
 
     expect(list1.length()).toEqual(1);
