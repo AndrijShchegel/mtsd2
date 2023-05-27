@@ -60,6 +60,7 @@ class circularList {
     }
     this.size++;
   }
+  
   delete(index) {
     if (index < 0 || index > this.size - 1) {
       throw new Error("Error. Wrong index");
@@ -121,5 +122,47 @@ class circularList {
       currNode = currNode.nextNode;
     }
     return currNode.value;
+  }
+
+  clone() {
+    const newList = new circularList();
+    let currNode = this.head;
+    for (let i = 0; i < this.size; i++) {
+      newList.append(currNode.value);
+      currNode = currNode.nextNode;
+    }
+    return newList;
+  }
+
+  reverse() {
+    let prevNode = this.tail;
+    let currNode = this.head;
+    let nextNode;
+
+    if (!currNode) {
+      throw new Error("Error. The list is empty");
+    }
+
+    for (let i = 0; i < this.size; i++) {
+      nextNode = currNode.nextNode;
+      currNode.nextNode = prevNode;
+      prevNode = currNode;
+      currNode = nextNode;
+    }
+    this.head = prevNode;
+    this.tail = this.head.nextNode;
+  }
+
+  findFirst(value) {
+    let currNode = this.head;
+    let indexToFind = -1;
+    for (let i = 0; i < this.size; i++) {
+      if (currNode.value === value) {
+        indexToFind = i;
+        return indexToFind;
+      }
+      currNode = currNode.nextNode;
+    }
+    return indexToFind;
   }
 }
