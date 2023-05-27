@@ -2,6 +2,8 @@
 
 ## Variant
 
+Number of my university transcript is 1132
+
 My variant is 1132 % 4 = 0
 
 ## Description
@@ -22,7 +24,7 @@ Then instal dependancies
 npm install
 ```
 
-To run file type
+To run file, type
 
 ```bash
 node main.js
@@ -36,7 +38,8 @@ npm test
 
 ## Failed test
 
-[Failure](https://github.com/AndrijShchegel/mtsd2/commit/a573342c76a22490ec737b4c24affbb0c42e3014)
+[Failed commit](https://github.com/AndrijShchegel/mtsd2/commit/a573342c76a22490ec737b4c24affbb0c42e3014)
+[Action for commit](https://github.com/AndrijShchegel/mtsd2/actions/runs/5100478054/jobs/9168780931)
 
 ## Conclusion
 
